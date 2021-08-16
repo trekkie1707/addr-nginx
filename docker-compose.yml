@@ -1,0 +1,13 @@
+version: "3"
+services:
+  addr-nginx:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: addr-nginx
+    ports:
+      - "80:80"
+    environment:
+      # Change HOSTNAME to reflect your domain
+      - HOSTNAME=localhost
+    restart: always

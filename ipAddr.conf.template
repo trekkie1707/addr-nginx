@@ -1,0 +1,19 @@
+server {
+  listen 80;
+  server_name ${HOSTNAME};
+
+  location / {
+    add_header Content-Type text/plain;
+    return 200 "${remote_addr}";
+  }
+
+  location /html {
+    add_header Content-Type text/html;
+    return 200 "<h1 style=\"text-align: center;\">${remote_addr}</h1>";
+  }
+
+  location /json {
+    add_header Content-Type application/json;
+    return 200 "{ \"public_ip\": \"${remote_addr}\" }";
+  }
+}
